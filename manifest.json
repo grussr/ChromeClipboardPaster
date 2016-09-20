@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Clipboard Typer",
-  "description": "This extension types the content of your clipboard",
+  "name": "Clipboard Paster",
+  "description": "This extension types the content of your clipboard, bypassing paste restrictions on websites.",
   "version": "0.1",
   "icons": {
     "128":"app_icon_128.png",
@@ -11,7 +11,7 @@
 
   "browser_action": {
     "default_icon": "icon.png",
-    "default_title": "Type clipboard text" 
+    "default_title": "Paste clipboard text by typing" 
   },
   "background" : {
       "page" : "background.html",

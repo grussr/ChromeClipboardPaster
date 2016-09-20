@@ -1,14 +1,24 @@
-chrome.browserAction.onClicked.addListener(function(tab) {
+chrome.browserAction.onClicked.addListener(function (tab) {
     var clipboardValue = getClipboard();
-	chrome.tabs.sendMessage(tab.id, {
+    if (clipboardValue != null) {
+        chrome.tabs.sendMessage(tab.id, {
             text: 'setText',
-            value: clipboardValue },
-        getDomCallBack);
+            value: clipboardValue
+        },
+            getDomCallBack);
+    }
+    else {
+        console.error('could not get clipboard text!');
+    }
 });
 
 function getClipboard() {
     var result = null;
     var textarea = document.getElementById('clipboardholder');
+    if (typeof textarea === undefined) {
+        console.log('textarea is missing!');
+        return null;
+    }
     textarea.value = '';
     textarea.select();
 
@@ -22,6 +32,5 @@ function getClipboard() {
     return result;
 }
 
-function getDomCallBack(content)
-{
+function getDomCallBack(content) {
 }
